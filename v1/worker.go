@@ -59,6 +59,7 @@ func (worker *Worker) LaunchAsync(errorsChan chan<- error) {
 
 			if retry {
 				log.WARNING.Printf("Broker failed with error: %s", err)
+				panic(err)
 			} else {
 				errorsChan <- err // stop the goroutine
 				return
